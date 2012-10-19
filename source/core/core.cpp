@@ -42,15 +42,16 @@
 
 int main (void)
 {
+    WDTCTL = WDTPW + WDTHOLD;
     // Настройка DCO генератора на частоту 8 МГц
-    ConfigDCO(DCO_8MHZ);
+    ConfigDCO(DCO_1MHZ);
     // Источник тактирования CPU - DCO
     ConfigMCLK(MCLK_DIV_1, MCLK_DCO, MCLK_ON);
     // Источник тактирования SMCLK - DCO
     ConfigSMCLK(SMCLK_DIV_1, SMCLK_DCO, SMCLK_ON);
     // Источником тактирования Таймера A является SMCLK
     // (см. описание ta.cpp)
-    ta.Configure(1000, 0);
+//    ta.Configure(1000, 0);
     
     AppMain();
     
